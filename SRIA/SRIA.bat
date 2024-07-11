@@ -73,14 +73,22 @@ if !count_existing_foldersPrdWeb! gtr !count_existing_foldersOrdWeb! (
                 for %%z in (!filename!) do (
                     if "!original:%%z=!" neq "!original!" (
                         echo ~~~~~~~~~~~~命中~~~~~~~~~~~~
-                        echo %dir_web_path%\!original!
-                        xcopy "%dir_web_path%\!original!" "!backuppath!\!original!" /E /I /H /Y >nul
+                        echo 需要copy和覆盖的路径:%dir_web_path%\!original!
+                        @REM xcopy "%dir_web_path%\!original!" "!backuppath!\!original!" /E /I /H /Y 
                         @REM 7z x "%%f" -o"%dir_web_path%\!original!" -y 
                     )
                 )
             )
         ) else (
             echo 处理单一品牌发布 !filename!
+            for %%e in (!existing_foldersOrdWeb!) do (
+                set "original=%%e"
+                if "%%e" == "!filename!" (
+                    echo "需要copy和覆盖的路径:%dir_web_path%\!original!"-----------------
+                    xcopy "%dir_web_path%\!original!" "!backuppath!\!original!" /E /I /H /Y 
+                    @REM 7z x "%%f" -o"%dir_web_path%\!original!" -y 
+                )
+            )
         )
     )
 ) else (
