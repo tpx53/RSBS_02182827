@@ -10,6 +10,8 @@ set "prdservice_path=E:\OOS_Application"
 set "ordservice_path=E:\"
 @REM jenkins服务器丢过来的压缩包存放路径
 set "zip_path=E:\upDate"
+@REM 7z安装位置
+set "7zPath=D:\Program Files\7-Zip\7z.exe"
 
 set "foldersPrdWeb=EMOAPI MailWebService PSCDataSyncWebAPI"
 set "foldersOrdWeb=DataTransAPI OOSWeb T100WebService"
